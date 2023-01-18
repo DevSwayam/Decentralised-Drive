@@ -19,6 +19,19 @@ const Display = ({account, contract}) => {
            const str = dataArray.toString();
            const str_array = str.split(","); 
            console.log(str_array);
+           const images = str_array.map((item,i)=>{
+            return(
+                <>
+                    <a href={item} key={i} target="_blank"></a>
+                    <img 
+                    key={i}
+                    src={`https://gateway.pinata.cloud/ipfs/${item.substring(6)}`}
+                    alt="new"
+                    className="="image-list>
+                    </img>
+                </>
+            )
+           })
         }
     }
     return<>
