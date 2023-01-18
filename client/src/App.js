@@ -17,6 +17,18 @@ function App() {
     const loadProvider = async ()=>{
       if(provider){
 
+        // below is a special script that i am not familliar with which helps to dynamically update data on change of metamask accounts
+        // tumne chain change ki to ye change hoga
+        window.ethereum.on("chainChanged", () => {
+          window.location.reload();
+        });
+
+        //Aur agar account change kiya to ye change hoga dynamically
+        window.ethereum.on("accountsChanged", () => {
+          window.location.reload();
+        })
+        // Bas idhar tak hi tha
+
         await provider.send("eth_requestAccounts",[]);
         const signer = provider.getSigner();
         const address = await signer.getAddress();
@@ -38,12 +50,17 @@ function App() {
 
   return (
     <div className="App">
-     <h1 style={{color:"white"}}>DDrive By DevSwayam</h1>
+     <h1 style={{color:"white"}}>DevsDrive</h1>
      <div class ="bg"></div>
      <div class ="bg bg2"></div>
      <div class ="bg bg3"></div> 
 
-     <p style={{color:"white"}}>account : {account ? account:"Please Connect to your wallet account"}</p>
+     <p style={{color:"white"}}> Account Connected: {account ? account:"Please Connect to your wallet account"}</p>
+     <FileUpload 
+      account={account} 
+      provider={provider} 
+      contract={contract}>
+     </FileUpload>
     </div>
   );
 }
