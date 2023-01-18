@@ -38,7 +38,12 @@ function App() {
 
   return (
     <div className="App">
-     
+     <h1 style={{color:"white"}}>DDrive By DevSwayam</h1>
+     <div class ="bg"></div>
+     <div class ="bg bg2"></div>
+     <div class ="bg bg3"></div> 
+
+     <p style={{color:"white"}}>account : {account ? account:"Please Connect to your wallet account"}</p>
     </div>
   );
 }
