@@ -3,7 +3,7 @@ import Upload from "./artifacts/contracts/Upload.sol/Upload.json";
 import {useState,useEffect} from "react";
 import {ethers} from "ethers";
 import FileUpload from "./components/FileUpload.js";
-// import Display from "./components/Display.js";
+import Display from "./components/Display.js";
 import Modal from "./components/Modal.js"
 
 function App() {

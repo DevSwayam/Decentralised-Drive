@@ -1,4 +1,4 @@
-const Dsiplay =()=>{
+const Display =()=>{
     return<>
     </>;
 }
