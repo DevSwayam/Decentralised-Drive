@@ -61,6 +61,10 @@ function App() {
       provider={provider} 
       contract={contract}>
      </FileUpload>
+     <Display 
+      account={account} 
+      contract={contract}>
+     </Display>
     </div>
   );
 }

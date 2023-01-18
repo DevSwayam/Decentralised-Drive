@@ -22,14 +22,14 @@ const FileUpload = ({ account, provider, contract }) => {
           data: formData,
           headers: {
             pinata_api_key: `
-                      00735906a67309495a11`,
-            pinata_secret_api_key: `3c848329a254bcbb95dae4ba9c729e883f7c948a8f0d24b99936d321ce18ceea`,
+            d3a08a8ef7d4cb95a14b`,
+            pinata_secret_api_key: `bc4c2bfada7031bc770b1a72ac5dccdf0390dced9edb2129ee13eb27bddb0a50`,
             "Content-Type": "multipart/form-data",
           },
         });
         const ImgHash = `ipfs://${resFile.data.IpfsHash}`;
         // const signer = contract.connect(provider.getSigner());
-        contract.add(account, ImgHash);
+        contract.add(account, ImgHash); //contract function
         alert("Hogaya Bhai");
         setFileName("Please Select Image");
         setFile(null);
@@ -41,7 +41,7 @@ const FileUpload = ({ account, provider, contract }) => {
   };
   const retrieveFile = (e) => {
     const data = e.target.files[0]; // as user can upload multiple images at a time i always want image feom 0th index
-    console.log(data);
+    //console.log(data);
     const reader = new window.FileReader();
     reader.readAsArrayBuffer(data);
     reader.onloadend = () => {
