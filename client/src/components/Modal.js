@@ -4,6 +4,7 @@ const Modal = ({ setModalOpen, contract }) => {
   const sharing = async () => {
     const address = document.querySelector(".address").value;
     await contract.allow(address);
+    alert("Access Shared ");
     setModalOpen(false);
   };
   useEffect(() => {
