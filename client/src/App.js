@@ -10,7 +10,7 @@ function App() {
   const [account,setAccount] = useState("");
   const [contract,setContract] = useState(null);
   const [provider, setProvider] = useState(null);
-  const [modal,setModal] = useState(false);
+  const [modalOpen,setModalOpen] = useState(false);
 
   useEffect(()=>{
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -49,23 +49,33 @@ function App() {
   
 
   return (
-    <div className="App">
-     <h1 style={{color:"white"}}>DevsDrive</h1>
-     <div class ="bg"></div>
-     <div class ="bg bg2"></div>
-     <div class ="bg bg3"></div> 
+    <>
+      {!modalOpen && (
+        <button className="share" onClick={() => setModalOpen(true)}>
+          Share
+        </button>
+      )}
+      {modalOpen && (
+        <Modal setModalOpen={setModalOpen} contract={contract}></Modal>
+      )}
 
-     <p style={{color:"white"}}> Account Connected: {account ? account:"Please Connect to your wallet account"}</p>
-     <FileUpload 
-      account={account} 
-      provider={provider} 
-      contract={contract}>
-     </FileUpload>
-     <Display 
-      account={account} 
-      contract={contract}>
-     </Display>
-    </div>
+      <div className="App">
+        <h1 style={{ color: "white" }}>DevsDrive</h1>
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+
+        <p style={{ color: "white" }}>
+          Account : {account ? account : "Not connected"}
+        </p>
+        <FileUpload
+          account={account}
+          provider={provider}
+          contract={contract}
+        ></FileUpload>
+        <Display contract={contract} account={account}></Display>
+      </div>
+    </>
   );
 }
 
